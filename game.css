@@ -48,9 +48,6 @@ img{
     font-weight: 700;
     position: relative;
     top:60px;
-    width: 331px;
-    left: -48px;
-
 }
 .player:hover{
     pointer-events: visible;
@@ -139,7 +136,10 @@ h2{
         width: 60px;
     }
     .score-con{
-        font-size: 25px
+        font-size: 25px;
+        width: 331px;
+        left: -48px;
+        
     }
     .message{
         font-size: 50px
