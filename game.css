@@ -1,0 +1,148 @@
+:root{
+    --player-color:rgb(211, 28, 28);
+    --computer-color:rgb(0, 0, 255);
+}
+body{
+    background:black;
+    height: 100vh;
+    width: 100%;
+    color: white;
+    overflow: hidden;
+}
+main{
+display: flex;
+align-items: center;
+justify-content: center;
+height: 100vh;
+}
+.con{
+    width: 70%;
+    top: 10PX;
+    position: relative;
+    right: -250px;
+}
+.choices-con{
+   display: flex;
+   justify-content: center;
+
+}
+.button-con{
+    padding-right: 55px;
+}
+.button-game{
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: white;
+    border: 0;
+}
+img{
+    width: 75px; 
+}
+.score-con{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 150px;
+    margin-top: -50px;
+    font-size: 30px;
+    font-family: sans-serif;
+    font-weight: 700;
+    position: relative;
+    top:60px;
+    width: 331px;
+    left: -48px;
+
+}
+.player:hover{
+    pointer-events: visible;
+    
+    box-shadow: 0 0 100px var(--player-color);
+}
+.message{
+    font-size: 70px;
+    font-family: monospace;
+    display: none;
+margin-top: -50px;
+position: relative;
+right: -70px;
+}
+.button-6{
+    display: flex;
+    align-items: center;
+    justify-content:center ;
+
+
+    
+}
+#resetBt{
+    background-image: linear-gradient(
+        to bottom,
+        rgba(0, 128, 0, 0.8) 0%,
+        rgba(0, 128, 0, 0.9) 20%,
+        rgba(0, 128, 0, 1) 40%,
+        rgba(0, 128, 0, 1) 60%,
+        rgba(0, 128, 0, 0.9) 80%,
+        rgba(0, 128, 0, 0.8) 100%
+    );
+    display: none;
+    position: relative;
+    width:90px;
+}
+
+h2{
+  font-size: 20px;
+}
+#Rock,#Paper,#Scissors{
+
+    top:-90px;
+    left:0;
+}
+.computer{
+    position: relative;
+}
+.computer-score{
+  position: relative;
+  left: -40px;
+ 
+  text-shadow: 0px 0px 10px var(--player-color);
+}
+.player-score{
+    text-shadow: 0px 0px 10px var(--computer-color);
+    
+    
+}
+.rest-wisdow{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 500px;
+    row-gap: 50px
+}
+@media only screen and (max-width: 1025px) and (min-width: 739px){
+
+    .con{
+        right: -250px;
+        width: 200px;
+    }
+    .score-con{
+        width: 573px;
+        left: -190px;
+    }
+
+}
+@media only screen and (max-width: 740px){
+
+    .con{
+        right: -120px;
+        width: 200px;
+    }
+    img {
+        width: 60px;
+    }
+    .score-con{
+        font-size: 25px
+    }
+    .message{
+        font-size: 50px
+    }
+
+};

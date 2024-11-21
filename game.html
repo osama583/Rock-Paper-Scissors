@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <main>
+        <div class="con">
+            <div class="choices-con" >
+
+                <div class="button-con"><button type="button" class="button-game computer" id="Rock"><img src="140215-removebg-preview.png" alt=""></button></div>
+                <div class="button-con"><button type="button" class="button-game computer" id="Paper"><img src="143007-removebg-preview.png" alt=""></button></div>
+                <div class="button-con"><button type="button" class="button-game computer" id="Scissors"><img src="140216-removebg-preview.png" alt=""></button></div>
+        
+            </div>
+            <div class="score-con">
+                <strong><span class="computer-score">Computer Score: <span id="ComputerScore">0</span></span></strong><strong><span class="player-score">Player Score: <span id="PlayerScore">0</span></span></strong>
+            </div>
+            <div class="choices-con">
+
+                <div class="button-con"><button class="button-game player" value="Rock" id="rock"><img src="140215-removebg-preview.png" alt=""></button></div>
+                <div class="button-con"><button class="button-game player" value="Paper" id="paper"><img src="143007-removebg-preview.png" alt=""></button></div>
+                <div class="button-con"><button class="button-game player" value="Scissors" id="scissors"><img src="140216-removebg-preview.png" alt=""></button></div>
+            
+            </div>
+
+        </div>
+        <div class="rest-wisdow">
+        <div id="messageLose" class="message"> You Lost !!</div>
+        <div id="messageWin" class="message"> You win !!</div>
+         <div class="button-6"> <button id="resetBt"><h2>reset</h2></button></div>
+        </div>
+
+    </main>
+    <script>
+let playerScore = 0;
+let computerScore = 0;
+let random = 0;
+let computer;
+const messageLose = document.querySelector("#messageLose");
+const messageWin = document.querySelector("#messageWin");
+const playerScoreText = document.querySelector("#PlayerScore");
+const computerScoreText = document.querySelector("#ComputerScore");
+const resetBt= document.querySelector("#resetBt");
+const displaycComputerBt=document.querySelectorAll(".computer");
+const displaycPlayerrBt=document.querySelectorAll(".player");
+const computerRock = document.querySelector("#Rock");
+const computerPaper = document.querySelector("#Paper");
+const computerScissors = document.querySelector("#Scissors");
+const con = document.querySelector(".con");
+// Get the computer choice
+function getComputerChoice() {
+    const computerChoice = ["Rock", "Paper", "Scissors"];
+    return computerChoice[Math.floor(Math.random() * computerChoice.length)];
+}
+// display the chosen cumputer chocie 
+function displayCumputerChoice(computerChoice){
+     // Show the computer's choice
+     if (computerChoice === "Rock") {
+        computerRock.style.display = "block";
+        computerRock.style.boxShadow = "0 0 40px var(--computer-color)"; 
+        computerPaper.style.display = "none";
+    computerScissors.style.display = "none";
+    } else if (computerChoice === "Paper") {
+        computerPaper.style.display = "block";
+        computerPaper.style.boxShadow = "0 0 40px var(--computer-color)"; 
+        computerRock.style.display = "none";
+        computerScissors.style.display = "none";
+    } else if (computerChoice === "Scissors") {
+        computerScissors.style.display = "block";
+        computerScissors.style.boxShadow = "0 0 40px var(--computer-color)"; 
+        computerRock.style.display = "none";
+    computerPaper.style.display = "none";
+    }
+}
+// Compare the computer's choice with the player's choice
+function round(userChoice) {
+    const computerChoice = getComputerChoice();
+    console.log("Computer choice: ", computerChoice); // Check what the computer chose
+    if (userChoice === "Rock" && computerChoice === "Scissors" ||
+        userChoice === "Paper" && computerChoice === "Rock" ||
+        userChoice === "Scissors" && computerChoice === "Paper") {
+        playerScore++;
+        playerScoreText.innerText = playerScore;
+    } else if (userChoice !== computerChoice) {
+        computerScore++;
+        computerScoreText.innerText = computerScore;
+    } else {
+        console.log("It's a tie");
+    }
+
+
+    displayCumputerChoice(computerChoice);
+
+    if (computerScore === 4 || playerScore === 4) {
+        if (computerScore === 4) {
+            messageLose.style.display = "block";
+        } else if (playerScore === 4) {
+            messageWin.style.display = "block";
+        }
+        resetGame();
+    }
+}
+function Rungame(chocie){
+    if (computerScore<4 && playerScore<4){
+        round(chocie);
+    }
+
+}
+function roundRestart(){
+    round(userChoice)
+
+}
+function resetGame() {
+    resetBt.style.display="block";
+    con.style.display="none";
+    resetBt.addEventListener("click", () => {
+        playerScore = 0;
+        computerScore = 0;
+        computerScoreText.innerText = computerScore;
+    playerScoreText.innerText = playerScore;
+    resetBt.style.display="none";
+    messageWin.style.display="none";
+    messageLose.style.display="none";
+    con.style.display="block";
+    computerRock.style.display = "block";
+    computerPaper.style.display = "block";
+    computerScissors.style.display = "block";
+    computerScissors.style.boxShadow = "none"; 
+    computerRock.style.boxShadow = "none"; 
+    computerPaper.style.boxShadow = "none"; 
+    });
+  
+}
+
+const rockBt = document.querySelector("#rock");
+const paperBt = document.querySelector("#paper");
+const scissorsBt = document.querySelector("#scissors");
+
+rockBt.addEventListener("click", () => {
+    console.log("Rock button clicked");
+    Rungame("Rock")
+
+});
+
+paperBt.addEventListener("click", () => {
+    console.log("Paper button clicked");
+    Rungame("Paper")
+});
+
+scissorsBt.addEventListener("click", () => {
+    console.log("Scissors button clicked");
+    Rungame("Scissors")
+    
+});
+    </script>
+</body>
+</html>
